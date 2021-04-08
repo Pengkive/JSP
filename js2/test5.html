@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<script type="text/javascript">
+
+	// 문자열(String)
+
+	// var 참조변수 = new String("문자열"); 	=> 문자열 객체
+	// var 참조변수 = "문자열";		=> 문자열 상수
+
+	var msg1 = new String("아이티윌");
+	var msg2 = "아이티윌";
+	
+	document.write("1==2 : "+ (msg1 == msg2)+"<br>");
+	document.write("1===2 : "+ (msg1 === msg2)+"<br>");        //데이터 값, 타입까지 같은지 물어봄
+
+
+	// 스타일 기능
+	document.write(msg2+ "<br>");
+	document.write(msg2.bold()+ "<br>");
+	document.write(msg2.italics()+ "<br>");
+	document.write(msg2.fontsize(15).fontcolor("blue")+ "<br>");
+	
+	// * 문자열도 배열이다. => 문자열의 데이터가 한글자씩 저장
+	// 배열의 인덱스 형태로 접근(0번 인덱스~)
+	// 문자열 데이터처리 기능 *중요*
+	msg2 ="안녕하세요 ITWILL 부산교육센터 입니다.";
+	
+	// ITWILL 글자를 출력
+	document.write("결과 : "+msg2.slice(6,12)+"<br>"); 	//i는 인덱스 6번째, L은 끝 인덱스-1 이므로 12번째(스페이스)
+	document.write("결과 : "+msg2.charAt(8)+"<br>");		//charAt -> 특정위치에 있는 글자만 출력, 한글자만 가능
+	document.write("결과 : "+msg2.substring(2,5)+"<br>"); // 시작인덱스, 끝-1
+	document.write("결과 : "+msg2.substr(2,5)+"<br>"); // 시작인덱스, 개수
+	
+	// 문자열의 데이터 찾기
+	document.write("결과 : " +msg2.indexOf("요")+"<br>"); //해당요소의 인덱스를 리턴 (값이 있을때) , 없으면 결과는 -1
+	document.write("결과 : " +msg2.lastIndexOf("요")+"<br>");	//
+		
+	document.write("결과 : " +msg2.indexOf("I")+"<br>"); // 값 6, 오른쪽에서 왼쪽으로 검색
+	document.write("결과 : " +msg2.lastIndexOf("I")+"<br>"); //값 9, 왼쪽에서 오른쪽으로 검색
+	
+	
+	
+	// split(구분값, 요소의 개수) => 배열의 형태로 저장
+	document.write("결과 : " +msg2.split(" ",3)+"<br>");
+	document.write("결과 : " +msg2.split(" ")+"<br>");
+	document.write("결과 : " +msg2.split(" ")+"<br>");
+	document.write("결과 : " +msg2.split(" ")[1]+"<br>");
+	
+	//주민번호 : 900101-1231321
+	// => 해당 주민번호를 사용해서 '성별' 출력
+	// 1,3 - 2,4
+	
+	//"성별은 -- 입니다.";
+	
+	
+	var i = "900101-1231321";
+	
+// 	document.writ(jumin.charAt(7));
+// 	document.write(jumin.substr(7,1));
+	
+// 	var check = jumin.substring(7,8);
+	
+// 	if(check ==1 || check==3){
+// 		document.write("성별은 남자입니다.");
+// 	} else if(check ==2 || check ==4){
+// 		document.write("성별은 여자입니다.")
+// 	}else{
+// 		document.write("잘못된 주민번호 입니다. <br>");
+// 	}
+
+
+
+
+	//Q. prompt () 사용해서 사용자의 영문이름을 입력받는다.
+	//=> 영문자의 이름을 전부 대문자로 출력
+	
+	var name = prompt("영문 이름을 입력하시오.");
+	
+		document.write(name.toUpperCase()+"<br>");
+	
+	//Q. prompt( ) 사용해서 전화번호 입력
+	// => 출력 010-****-1231
+	
+	var tel = prompt("전화번호를 입력하시오.");
+	
+		document.write(tel.substr(0,4));
+		document.write("****");
+		document.write(tel.substring(8,13));
+		
+// 	var tmp = tel.substr(0,4)+"****"+tel.substring(8,13);				//2가지 방법 다 사용가능
+// 		document.write(tmp);
+		
+		
+		document.write("<br>");
+		
+	//Q. 이메일 주소 체크
+	// 1. 사용자의 이메일을 입력받는다. (prompt())
+	// 2. 사용가능한 이메일인지를 판단. (@가 있는지 없는지 판단)
+	// 3. ".co.kr", ".com", ".net", ".or.kr",".go.kr" 주소가 아닌경우
+	// 	  이메일 주소가 아니라고 판다.
+	// 4. 2개의 조건을 모두 만족하는 경우 "사용자 이메일 확인 ! : test@itwillbs.co.kr"
+	//			"	둘중에 하나라도 만족하지 않는 경우
+	//				-> "이메일 형식이 잘못되었습니다. 관리자에게 문의하세요"
+ 	
+	var email = prompt ("이메일 주소 입력하시오."); 
+		
+	var urlArr = [".co.kr", ".com", ".net", ".or.kr",".go.kr"];
+	
+	if(email.indexOf("@")!=-1){			//활용) email.indexOf("@")>5    -> @앞에 최소 6자리 들어가야됨.		
+		//이메일 주소에 "@" 포함되어 있음
+		for(var i=0;i<urlArr.length;i++){
+			// 배열의 처음부터 끝까지 접근
+			if(email.indexOf(urlArr[i])>0){
+				document.write("사용자 이메일 확인! : test@itwillbs.co.kr");
+			}
+		}	
+		
+	}else{
+		document.write("이메일 형식이 잘못되었습니다. 관리자에게 문의하세요");
+	  }
+	
+	
+	
+	
+	
+	
+	
+
+</script>
+<body>
+<h1> WebContent/js2/test5.html</h1>
+</body>
+</html>

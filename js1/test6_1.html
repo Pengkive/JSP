@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+
+	// 사용자가 "네이버, 다음, 구글, 네이트..." 입력시(한/영)
+	// 해당 페이지로 이동
+	//location.href="http://www.naver.com";   <-페이지로 이동
+	
+	//1. 사용자 입력
+	
+	//2. 주소 비교 후 페이지 이동
+	
+	
+	 // 주소 비교 -> 페이지 이동
+	var site = prompt ("이동하고 싶은 페이지명을 입력하세요.");
+	var url="";
+	
+	switch (site) {
+	
+	case "naver":
+	case "NAVER":
+	case "네이버":
+		//location.href="http://www.naver.com";
+		url="http://www.naver.com";
+		break;
+	case "daum":
+	case "DAUM":	
+	case "다음":
+		//location.href="http://www.daum.net";
+		url="http://www.daum.net";
+		break;
+	case "nate":
+	case "NATE":	
+	case "네이트":
+		//location.href="http://www.nate.com";
+		url="http://www.nate.net";
+		break;
+	case "google":
+	case "GOOGLE":	
+	case "구글":
+		//location.href="http://www.google.com";
+		url="http://www.google.com";
+		break;	
+	
+	default:
+		alert ("해당 페이지는 지원하지 않습니다.");
+	}
+	
+	// url에 주소가 있을때
+// 	if(url ! = ""){
+// 		location.href=url;
+// 	}
+
+	if(url){ // Boolean(url)   <- 위 구문과 같음
+		location.href=url;
+	}
+	
+
+</script>
+</head>
+<body>
+	<h1>WebContent/js1/test6_1.html</h1>
+</body>
+</html>
