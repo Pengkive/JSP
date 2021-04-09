@@ -57,6 +57,18 @@ public class Main {
 		
 		m.showTotal(jung);
 		
+		System.out.println("-------------------------------");
+		// 계산전용 객체 Calc 생성 (새로운 파일에 생성)
+		// 총점(SUM)- 계산후 리턴, 평균(AVG) -계산후 출력
+		// 해당 메서드를 오버로딩해서 점수3개, 객체정보를 사용하는 메서드 구현
+		Calc c = new Calc();
+		
+		System.out.println( c.SUM(kor, eng, math) ) ;
+		System.out.println( c.SUM(jung) );
+		
+		c.AVG(kor, eng, math);
+		c.AVG(jung);
+		
 		
 
 	}
