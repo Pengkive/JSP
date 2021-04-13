@@ -1,4 +1,3 @@
-<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.DriverManager"%>
@@ -11,53 +10,51 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>WebContent/JSP5/select.jsp</h1>
-	<%
-		// 모든 회원의 정보를 출력 => 테이블 생성
+	<h1>WebContent/JSP5/updatePro.jsp</h1>
 
+	<%
+	   //한글 처리 
+	   request.setCharacterEncoding("UTF-8");
+	
+	   //전달된 파라미터값 저장
+	   String id = request.getParameter("id");
+	   String pw = request.getParameter("pw");
+	   String email = request.getParameter("email");
+	
 		final String DRIVER = "com.mysql.jdbc.Driver";
 		final String DBURL = "jdbc:mysql://localhost:3306/jspdb";
 		final String DBID = "root";
 		final String DBPW = "1234";
-		
+	
 		// 1 드라이버 로드
 		Class.forName(DRIVER);
-		// 2 디비연결 
+		System.out.println(" 드라이버 로드 성공 ");
+		
+		// 2 디비 연결
 		Connection con =
 		DriverManager.getConnection(DBURL, DBID, DBPW);
 		
-		// 3 sql 생성 & pstmt 객체 생성
-		String sql ="select * from itwill_member";
-		PreparedStatement pstmt = con.prepareStatement(sql);
+		System.out.println(" 디비 연결 성공 ");
 		
-		// 4  sql 실행
-		ResultSet rs = pstmt.executeQuery();
-				
+		// 3.sql작성 & pstmt 객체 생성
+		String sql
+		="update itwill_member set email=? where id=? and pw=?";
+		
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		// ?
+	  	pstmt.setString(1, email);
+		pstmt.setString(2,id);
+		pstmt.setString(3, pw);
+		
+		// 4. sql 실행
+		pstmt.executeUpdate();
+		
+		System.out.println(" 정보 수정 성공 ");		
 	%>
-	
-	<table border="1">
-	   <tr>
-	     <td>id</td>
-	     <td>pw</td>
-	     <td>name</td>
-	     <td>gender</td>
-	     <td>email</td>
-	   </tr>
-	  <%
-	    // 5 데이터 처리 
-	   while(rs.next()){
-		   %>
-		   <tr>
-		     <td><%=rs.getString("id") %></td>
-		     <td><%=rs.getString("pw") %></td>
-		     <td><%=rs.getString("name") %></td>
-		     <td><%=rs.getString("gender") %></td>
-		     <td><%=rs.getString("email") %></td>
-		   </tr>
-		   <%
-	   }
-	  %>
-	</table>
+
+
+
+
 
 
 

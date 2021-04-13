@@ -7,17 +7,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>WebContent/JSP5/insertForm.jsp</h1>
-	
-	<form action="insertPro.jsp" method="post">
-	아이디 : <input type="text" name="id"><br>
-	비밀번호 : <input type = "password" name="pw"><br>
-	이메일 : <input type = "text" name="email"><br>
-		<input type="submit" value="가입하기">
-	</form>
-	
-	
-	
-	
+   <h1>WebContent/JSP5/insertForm.jsp</h1>
+   
+   <form action="insertPro.jsp" method="post">
+        아이디 : <input type="text" name="id"><br>
+        비밀번호 : <input type="password" name="pw"><br>
+        이메일 : <input type="text" name="email"><br>
+        <input type="submit" value="가입하기">   
+   </form>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+
+
 </body>
 </html>
